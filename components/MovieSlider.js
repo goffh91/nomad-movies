@@ -8,7 +8,6 @@ import MovieSlide from './MovieSlide';
 const SWIPER_HEIGHT = Layout.height / 3;
 
 const View = styled.View`
-    background-color: red;
     height: ${SWIPER_HEIGHT};
 `;
 
