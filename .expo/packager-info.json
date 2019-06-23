@@ -1,10 +1,10 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": null,
-  "packagerPort": null,
-  "packagerPid": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null,
+  "expoServerPort": 19000,
+  "packagerPort": 19001,
+  "packagerPid": 12177,
+  "expoServerNgrokUrl": "https://va-6kd.hiraki.nomad-movies.exp.direct",
+  "packagerNgrokUrl": "https://packager.va-6kd.hiraki.nomad-movies.exp.direct",
+  "ngrokPid": 12191,
   "webpackServerPort": null
 }
