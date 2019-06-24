@@ -73,7 +73,7 @@ const MovieSlide = ({
                         <MovieRating votes={voteAvg} inSlide={true} />
                     </VoteContainer>
                     {overview ? (
-                        <Overview>{overview.length > 117
+                        <Overview>{overview.length > 120
                         ? `${overview.substring(0, 117)}...` : overview}
                         </Overview>
                     ) : null}
