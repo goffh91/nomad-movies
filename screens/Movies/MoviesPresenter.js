@@ -12,10 +12,8 @@ const Container = styled.ScrollView`
 `;
 
 const MoviesPresenter = ({ loading, upcoming, popular, nowPlaying}) => {
-    return loading ? 
+    return loading ? <Loader /> : 
     (
-        <Loader />
-    ):(
         <Container>
             {nowPlaying ? <MovieSlider movies={nowPlaying} /> : null}
             {upcoming ? (
@@ -29,6 +27,23 @@ const MoviesPresenter = ({ loading, upcoming, popular, nowPlaying}) => {
                                 posterPhoto={movie.poster_path} 
                                 title={movie.title} 
                                 voteAvg={movie.vote_average} 
+                            />)
+                    )}
+                </Section>
+                ) : null}
+            {popular ? (
+                <Section movies={popular} title="Popular Movies" horizontal={false}>
+                    {popular
+                        .filter(movie => movie.poster_path !== null)
+                        .map(movie => (
+                            <MovieItem 
+                                key={movie.id} 
+                                id={movie.id} 
+                                posterPhoto={movie.poster_path} 
+                                title={movie.title} 
+                                voteAvg={movie.vote_average} 
+                                horizontal={true} 
+                                overview={movie.overview}
                             />)
                     )}
                 </Section>
