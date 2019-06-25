@@ -1,5 +1,4 @@
 import React from 'react';
-import { Text } from 'react-native';
 import PropTypes from 'prop-types';
 import Loader from '../../components/Loader';
 import styled from 'styled-components';
@@ -21,14 +20,13 @@ const TVPresenter = ({ loading, popular, topRated, airingToday }) => {
                         {airingToday
                             .filter(tv => tv.poster_path !== null)
                             .map(tv => (
-                                //<MovieItem 
-                                //    key={tv.id} 
-                                //    id={tv.id} 
-                                //    posterPhoto={tv.poster_path} 
-                                //    title={tv.title} 
-                                //    voteAvg={tv.vote_average} 
-                                ///>
-                                null
+                                <MovieItem 
+                                    key={tv.id} 
+                                    id={tv.id} 
+                                    posterPhoto={tv.poster_path} 
+                                    title={tv.name} 
+                                    voteAvg={tv.vote_average} 
+                                />
                             )
                         )}
                     </Section>
