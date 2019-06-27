@@ -27,7 +27,7 @@ export const tvApi = {
     getPopular: () => api.get('tv/popular'),
     getTopRated: () => api.get('tv/top_rated'),
     getAiringToday: () => api.get('tv/airing_today'),
-    searchTv: (id) => api.get(`tv/${id}`, {
-        params: { append_to_response: 'videos' }
+    searchTv: (term) => api.get('search/tv', {
+        params: { query: encodeURIComponent(term) }
     })
 }
