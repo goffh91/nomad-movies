@@ -6,6 +6,7 @@ import Layout from '../constants/Layout';
 import MoviePoster from './MoviePoster';
 import { TINT_COLOR } from '../constants/Colors';
 import MovieRating from './MovieRating';
+import { withNavigation } from 'react-navigation';
 
 const Column = styled.View`
     width: 60%;
@@ -60,7 +61,8 @@ const BgImage = styled.Image`
 
 const MovieSlide = ({
     id, posterPhoto, backgroundPhoto,
-    title, voteAvg, overview
+    title, voteAvg, overview, 
+    isMovie=true, navigation
 }) => {
     return (
         <Container>
@@ -77,7 +79,16 @@ const MovieSlide = ({
                         ? `${overview.substring(0, 117)}...` : overview}
                         </Overview>
                     ) : null}
-                    <BtnContainer>
+                    <BtnContainer onPress={() =>
+                        navigation.navigate({
+                            routeName: "Detail",
+                            params: {
+                                isMovie, id, 
+                                posterPhoto, backgroundPhoto,
+                                title, voteAvg, overview
+                            },
+                        })
+                    }>
                         <BtnText>More details</BtnText>
                     </BtnContainer>
                 </Column>
@@ -95,4 +106,4 @@ MovieSlide.propTypes = {
     overview: PropTypes.string.isRequired
 }
 
-export default MovieSlide;
+export default withNavigation(MovieSlide);

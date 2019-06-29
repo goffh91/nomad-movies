@@ -26,23 +26,7 @@ const TVPresenter = ({ loading, popular, topRated, airingToday }) => {
                                     posterPhoto={tv.poster_path} 
                                     title={tv.name} 
                                     voteAvg={tv.vote_average} 
-                                />
-                            )
-                        )}
-                    </Section>
-                ) : null}
-                {popular ? 
-                (
-                    <Section title="Popular">
-                        {popular
-                            .filter(tv => tv.poster_path !== null)
-                            .map(tv => (
-                                <MovieItem 
-                                    key={tv.id} 
-                                    id={tv.id} 
-                                    posterPhoto={tv.poster_path} 
-                                    title={tv.name} 
-                                    voteAvg={tv.vote_average} 
+                                    isMovie={false} 
                                 />
                             )
                         )}
@@ -60,6 +44,26 @@ const TVPresenter = ({ loading, popular, topRated, airingToday }) => {
                                     posterPhoto={tv.poster_path} 
                                     title={tv.name} 
                                     voteAvg={tv.vote_average} 
+                                    isMovie={false} 
+                                />
+                            )
+                        )}
+                    </Section>
+                ) : null}
+                {popular ? 
+                (
+                    <Section title="Popular" horizontal={false}>
+                        {popular
+                            .filter(tv => tv.poster_path !== null)
+                            .map(tv => (
+                                <MovieItem 
+                                    horizontal={true}
+                                    key={tv.id} 
+                                    id={tv.id} 
+                                    posterPhoto={tv.poster_path} 
+                                    title={tv.name} 
+                                    voteAvg={tv.vote_average} 
+                                    isMovie={false} 
                                 />
                             )
                         )}

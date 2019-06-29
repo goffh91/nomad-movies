@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import MoviePoster from './MoviePoster';
 import MovieRating from './MovieRating';
 import { GREY_COLOR } from '../constants/Colors';
+import { TouchableWithoutFeedback } from 'react-native';
+import { withNavigation } from 'react-navigation';
 
 const Container = styled.View`
     align-items: center;
@@ -32,8 +34,21 @@ const Overview = styled.Text`
     margin-vertical: 10px;
 `;
 
-const MovieItem = ({ id, posterPhoto, title, voteAvg, horizontal=false, overview }) => {
-    return (horizontal ? (
+const MovieItem = ({
+    id, posterPhoto, title, voteAvg, 
+    overview, horizontal=false, isMovie=true, navigation
+}) => {
+    return (
+        <TouchableWithoutFeedback onPress={() => navigation.navigate({
+            routeName: "Detail", 
+            params: {
+                isMovie, id, 
+                posterPhoto, title, 
+                voteAvg, overview, 
+                backgroundPhoto: null
+            }
+        })}>
+        {horizontal ? (
         <HContainer>
             <MoviePoster path={posterPhoto} />
             <Column>
@@ -54,7 +69,9 @@ const MovieItem = ({ id, posterPhoto, title, voteAvg, horizontal=false, overview
             <Title>{title.length > 13 ? `${title.substring(0, 10)}...` : title}</Title>
             <MovieRating votes={voteAvg} />
         </Container>
-    ));
+    )}
+    </TouchableWithoutFeedback>
+    )
 }
 
 MovieItem.propTypes = {
@@ -62,7 +79,8 @@ MovieItem.propTypes = {
     posterPhoto: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     voteAvg: PropTypes.number.isRequired,
-    overview: PropTypes.string
+    overview: PropTypes.string,
+    isMovie: PropTypes.bool
 }
 
-export default MovieItem;
+export default withNavigation(MovieItem);

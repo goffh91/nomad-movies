@@ -66,6 +66,7 @@ const SearchPresenter = ({
                                     title={movie.title} 
                                     voteAvg={movie.vote_average} 
                                     overview={movie.overview}
+                                    isMovie={false} 
                                 />
                             )
                         )}
